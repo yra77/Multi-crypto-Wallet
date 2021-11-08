@@ -1,4 +1,5 @@
-# Wallet - Не законченный крипто кошелёк. Nodejs 
+# Wallet . Nodejs
+
 Bitcoin,
 Ethereum,
 Litecoin,
@@ -7,8 +8,6 @@ Solana,
 Tether,
 Shiba inu,
 BNB,
-Busd,
-Bep20,
-Erc20,
-
-Create, Send, Receive пока что так
+Busd
+ 
+ Можно отправлять и присылать монеты. Busd - Bep20, Shiba and Tether - Erc20. Кнопки send отключены пока на счету пусто. 
