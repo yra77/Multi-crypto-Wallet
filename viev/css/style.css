@@ -1,0 +1,67 @@
+
+body
+{
+    font-family: 'Varela Round', sans-serif;
+    background:rgb(235, 165, 165);
+    width: 98%;
+    height: 35em;
+    padding: 0px;
+}
+.high
+{
+    background-color: black;
+    color:chartreuse;
+    width: 50%;
+    border: 2px solid #5394eb;
+    margin-left: 25%;
+    margin-top: 2.5%;
+    height: auto;
+    min-height: 35em;
+    text-align: center;
+    border-radius: 25% 10%;  
+}
+.wallet
+{
+    margin-top: 2em;
+}
+.wallet div
+{
+    margin-top: 1em;
+}
+#secretCode
+{
+    font-size: 70%;
+    color:deeppink;
+}
+.secretCode
+{
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 2px solid rgb(150, 5, 5);
+    border-radius: 25% 5%;
+}
+.wallet button
+{
+    padding: 0px;
+    border: none;
+    background-color: #7f4caf;
+   margin-left: 2em;
+   width: 4.5em;
+   height: 1.5em;
+   color:rgb(233, 224, 224);
+   text-align: center;
+}
+.wallet span
+{
+    margin-left: 1em;
+    color:rgb(0, 60, 255)
+}
+button:hover 
+{
+    background-color: chartreuse;
+    color: rgb(20, 20, 20);
+}
