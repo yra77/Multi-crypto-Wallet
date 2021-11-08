@@ -26,6 +26,8 @@ body
 }
 .wallet div
 {
+    width: 70%;
+    text-align: right;
     margin-top: 1em;
 }
 #secretCode
