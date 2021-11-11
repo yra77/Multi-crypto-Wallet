@@ -5,8 +5,8 @@ jQuery(document).ready(function($)
 
   $('.butReceive').click(function()
   {
-    var id = this.parentNode.id;
-  
+    var id = $(this).closest("tr").attr("id");//this.parentNode.id;
+ 
 $.ajax({
     type: 'POST',
     url: 'http://localhost:8080/receive',
@@ -30,16 +30,27 @@ function Receive(val, id)
     $('.secretCode').hide();
     $('.wallet').hide();
     $('#divReceive').show();
+    
+    if(id === "shiba_inu" || id === "tether")
+       id += "<p style='color:red'> network erc20 only</p>";
+       if(id === "bnb" || id === "busd")
+       id += "<p style='color:red'> network bep20 only</p>";
+    $("#divReceive").html('<p style="color:white; margin-top: 3em;">The address of this wallet ' + id + '</p><span style="color:chartreuse;" class="receiveCopy">' + val + ' </span><button class="fa copy">&#xf0c5; copy</button>'
+    + '<button type="button" class="exit" style="font-size:80%;background-color:red; color:white; margin-top: 5em; margin-left: 35%;">return</button>');
 
-    $("#divReceive").html('<p style="color:white; margin-top: 3em;">You must send ' + id + ' to address:</p><p style="color:chartreuse;">' + val + '</p>'
-    + '<button type="button" style="background-color:red; color:white; margin-top: 5em; margin-left: 35%;">Exit</button>');
-
-    $('#divReceive button').click(function()
+    $('#divReceive .exit').click(function()
     {
         $('#divReceive').hide();
         $('.secretCode').show();
         $('.wallet').show();
     });
+
+   $('.copy').click(function()
+   {
+    var text = $(".receiveCopy").text();
+    navigator.clipboard.writeText(text);
+   });
+
 }
 
 });
