@@ -16,6 +16,13 @@ $.ajax({
     }
    });
 
+
+   $('.copy').click(function()
+   {
+    var text = $(".pCopy").text();
+    navigator.clipboard.writeText(text);
+   });
+   
 //----------------------------------------BALANCE----------------------------------------//
    $.ajax({
     type: 'POST',
@@ -34,11 +41,12 @@ $.ajax({
    function UpdateBalance(val) 
    {
         // console.log(val[0]['bitcoin']);
-    $('.wallet  > div').each((index, elem) => 
+    //$('.wallet  > div')
+    $('.wallet table tbody tr').each((index, elem) => 
     {
          if((elem.id).toString() === Object.keys(val[index])[0])
          {
-            $('#' + elem.id + ' span').text(Object.values(val[index]));
+            $('#' + elem.id + ' .balance').text(Object.values(val[index]));
 
       //Disable button send if balance == 0
               if(Object.values(val[index]) == 0)
@@ -53,4 +61,35 @@ $.ajax({
     
    }
  //----------------------------------------End BALANCE----------------------------------------//
+
+ //----------------------------------------Get price -----------------------------------------//
+
+ $.ajax({
+  type: 'POST',
+  url: 'http://localhost:8080/price',
+  success: function(response) 
+  { 
+     WievPrice(response)
+  },
+  error: function(xhr, status, err) 
+  {
+    console.log(xhr.responseText);
+  }
+ });
+
+ function WievPrice(val) 
+ {
+  
+  $('.wallet table tbody tr').each((index, elem) => 
+  {
+      if((elem.id).toString() === Object.keys(val[index])[0])
+      {
+        var t = Object.values(val[index]) + '<span style="color:green"> $</span>'; 
+          $('#' + elem.id + ' .price').html(t);
+      }
+  });
+
+ }
+ //----------------------------------------End Get price -----------------------------------------//
+
 });
