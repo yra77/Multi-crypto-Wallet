@@ -14,27 +14,29 @@ app.use(bodyParser.json());
     
        var resTransactions = main.SendCoin(id, toAddress, amount);
        resTransactions.then(val =>{res.send(val || {});});
-         // получили req.body.id
-       // res.send(resTransactions || {}); 
     });
 
     app.post('/receive', (req, res) =>
     {
         var address = main.GetAddress(req.body.id);
         address.then(val =>{res.send(val || {});});
-       // res.send(address || {});//req.body.id || {}); 
     });
 
     app.post('/start', (req, res) =>
     {
-       //var result = main.jsonKeys;
        var secretCode = main.secretCode;
        res.send(secretCode);
     });
 
      app.post('/balanceAll', (req, res) => 
      {
-          var result = main.GetBalance();//require('../manager/getBalance').GetBalance();
+          var result = main.GetBalance();
+           result.then(val =>{res.send(val);});
+     });
+
+     app.post('/price', (req, res) => 
+     {
+          var result = main.GetPrices();
            result.then(val =>{res.send(val);});
      });
 }
