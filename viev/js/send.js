@@ -4,7 +4,7 @@ jQuery(document).ready(function($)
   
   $('.butSend').click(function()
   {
-    var id = this.parentNode.id;  
+    var id = $(this).closest("tr").attr("id");//this.parentNode.id;  
     
     $('.secretCode').hide();
     $('.wallet').hide();
