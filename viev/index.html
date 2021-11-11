@@ -5,37 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <meta http-equiv='content-language' content='en'> -->
 		<meta name="robots" content="INDEX,ALL"/>
-           
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link href="./style.css" rel="stylesheet" type="text/css" media="all"/> <!-- ?ts=<?=time()?> -->
             <script src="./jquery.min.js"></script>
             <script btype="text/javascript" src="./send.js"></script>
             <script btype="text/javascript" src="./receive.js"></script>
             <script btype="text/javascript" src="./start.js"></script>
-            <!-- <script src="./index.js"></script> -->
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-           <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+      
       <title>Multi wallet</title>
     </head>
     <body>
-             <div class="high">
+            <div class="high">
 
                <div id="divReceive"></div>
-               <div class="secretCode"><span>Secret code please copy and save</span><p id="secretCode"></p></div>
-
+               <div class="secretCode"><span>Secret code please copy and save</span><p id="secretCode" class="pCopy"></p><button class="fa copy">&#xf0c5; copy</button></div>
+               
                  <div class="wallet">
-                      <div id="bitcoin">Bitcoin <img src="./img/bitcoin.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="litecoin">Litecoin <img src="./img/litecoin.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="dogecoin">Dogecoin <img src="./img/dogecoin.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="solana">Solana <img src="./img/solana.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="ethereum">Ethereum <img src="./img/ethereum.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="shiba_inu">Shiba inu(ERC20) <img src="./img/shiba_inu.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="tether">Tether(ERC20) <img src="./img/tether.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="bnb">BNB <img src="./img/bnb.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
-                      <div id="busd">Busd(Bep20) <img src="./img/busd.png" class="img" alt=""> <button class="butSend" type='button'>send</button><button class="butReceive" type='button'>receive</button><span> 0</span></div>
+
+                  <table class="table table-borderless table-sm">     
+                    <tbody>
+                      <tr id="bitcoin">
+                        <td ><img src="./img/bitcoin.png" class="img" alt=""> Bitcoin</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="litecoin">
+                        <td><img src="./img/litecoin.png" class="img" alt=""> Litecoin</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="dogecoin">
+                        <td><img src="./img/dogecoin.png" class="img" alt=""> Dogecoin</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="solana">
+                        <td><img src="./img/solana.png" class="img" alt=""> Solana</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="ethereum">
+                        <td><img src="./img/ethereum.png" class="img" alt=""> Ethereum</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="shiba_inu">
+                        <td> <img src="./img/shiba_inu.png" class="img" alt=""> Shiba inu</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="tether">
+                        <td><img src="./img/tether.png" class="img" alt=""> Tether</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="bnb">
+                        <td><img src="./img/bnb.png" class="img" alt=""> BNB</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                      <tr id="busd">
+                        <td><img src="./img/busd.png" class="img" alt=""> Busd</td>
+                        <td class="balance"></td>
+                        <td class="price"></td>
+                        <td><button class="butSend" type='button'>send</button></td>
+                        <td><button class="butReceive" type='button'>receive</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                  </div>
 
              </div>
-
+             <div class="exchange">
+                     <p>Exchange</p>
+             </div>
     </body>
 </html>
