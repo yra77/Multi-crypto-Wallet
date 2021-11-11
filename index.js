@@ -8,11 +8,32 @@ const etherWallet = require ("./Tokens/ethereum");
  const shibainuWallet = require ("./Tokens/shiba_inu");
  const bep20Wallet = require ("./Tokens/bep20Tokens");
 const fs = require('fs');
-
+const CoinGecko = require('coingecko-api');
 
 exports.jsonKeys = [];
 exports.balance = [];
 exports.secretCode = '';
+
+
+module.exports.GetPrices = async ()=>
+{
+  const CoinGeckoClient = new CoinGecko();
+  let price = await CoinGeckoClient.simple.price({ids: ['bitcoin', 'litecoin', 'dogecoin', 'solana', 'ethereum', 'shiba-inu','tether', 'binancecoin', 'binance-usd' ]});
+  
+  var arr = new Array();
+
+ arr.push({"bitcoin" : price.data['bitcoin']['usd']});
+ arr.push({"litecoin" : price.data['litecoin']['usd']});
+ arr.push({"dogecoin" : price.data['dogecoin']['usd']});
+ arr.push({"solana" : price.data['solana']['usd']});
+ arr.push({"ethereum" : price.data['ethereum']['usd']});
+ arr.push({"shiba_inu" : price.data['shiba-inu']['usd']});
+ arr.push({"tether" : price.data['tether']['usd']});
+ arr.push({"bnb" : price.data['binancecoin']['usd']});
+ arr.push({"busd" : price.data['binance-usd']['usd']});
+
+   return arr;
+}
 
 module.exports.SendCoin = async (id, toAddress, amount) =>
 {
