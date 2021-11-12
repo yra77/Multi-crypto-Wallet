@@ -17,21 +17,23 @@ exports.secretCode = '';
 
 module.exports.GetPrices = async ()=>
 {
+  var id = ['bitcoin', 'litecoin', 'dogecoin', 'solana', 'ethereum', 'shiba-inu','tether', 'binancecoin', 'binance-usd' ];
   const CoinGeckoClient = new CoinGecko();
-  let price = await CoinGeckoClient.simple.price({ids: ['bitcoin', 'litecoin', 'dogecoin', 'solana', 'ethereum', 'shiba-inu','tether', 'binancecoin', 'binance-usd' ]});
-  
+  let info = await CoinGeckoClient.coins.markets({ids: id});
+
   var arr = new Array();
 
- arr.push({"bitcoin" : price.data['bitcoin']['usd']});
- arr.push({"litecoin" : price.data['litecoin']['usd']});
- arr.push({"dogecoin" : price.data['dogecoin']['usd']});
- arr.push({"solana" : price.data['solana']['usd']});
- arr.push({"ethereum" : price.data['ethereum']['usd']});
- arr.push({"shiba_inu" : price.data['shiba-inu']['usd']});
- arr.push({"tether" : price.data['tether']['usd']});
- arr.push({"bnb" : price.data['binancecoin']['usd']});
- arr.push({"busd" : price.data['binance-usd']['usd']});
-
+  for (let i = 0; i < 9; i++) 
+  {
+    for (let j = 0; j < 9; j++) 
+    {
+       if(id[i] === info.data[j]['id'])
+       {
+        arr.push([id[i] , info.data[j]['current_price'], info.data[j]['price_change_percentage_24h'].toFixed(2)]);
+       }
+        
+    } 
+  }
    return arr;
 }
 
