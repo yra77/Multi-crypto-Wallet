@@ -36,7 +36,7 @@ function Receive(val, id)
        if(id === "bnb" || id === "busd")
        id += "<p style='color:red'> network bep20 only</p>";
     $("#divReceive").html('<p style="color:white; margin-top: 3em;">The address of this wallet ' + id + '</p><span style="color:chartreuse;" class="receiveCopy">' + val + ' </span><button class="fa copy">&#xf0c5; copy</button>'
-    + '<button type="button" class="exit" style="font-size:80%;background-color:red; color:white; margin-top: 5em; margin-left: 35%;">return</button>');
+    + '<button type="button" class="exit" style="font-size:80%;background-color:red; color:white; margin-top: 5em; margin-left: 35%;">back</button>');
 
     $('#divReceive .exit').click(function()
     {
