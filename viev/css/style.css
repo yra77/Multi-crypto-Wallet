@@ -11,24 +11,10 @@ body
 {
     background-color: black;
     color:rgb(43, 107, 150);
-    width: 45%;
+    width: 65%;
     border: 2px solid #27292c;
     float: left;
     margin-left: 2%;
-    margin-top: 2.5%;
-    height: auto;
-    min-height: 35em;
-    text-align: center;
-     border-radius: 4%;  /* 25%,10% */
-}
-.exchange
-{
-    background-color: black;
-    color:rgb(51, 139, 16);
-    width: 45%;
-    border: 2px solid #27292c;
-    float: right;
-    
     margin-top: 2.5%;
     height: auto;
     min-height: 35em;
@@ -84,6 +70,27 @@ body
     color:white;
     background-color: black;
 }
+.copySecCod
+{
+    outline: none;
+    color: green;
+}
+.copySecCod:focus
+{
+    outline: none;
+}
+.copySecCod:hover
+{
+    color: green;
+    outline: none;
+}
+.copySecCod
+{
+    border:none;
+    font-size: 80%;
+    color:white;
+    background-color: black;
+}
 .wallet table button
 {
    padding: 0px;
@@ -101,9 +108,22 @@ table
     width: 80%;
     margin-left: 3%;
 }
+.table span
+{
+    color: rgb(116, 112, 112);
+}
+.table thead
+{
+    border-bottom: 0.05px solid rgb(51, 50, 50);
+}
+.table th
+{
+    font-weight: 400;
+    color: rgb(151, 146, 146);
+}
 td:nth-child(1) 
 {
-    width: 7em;
+    width: 9em;
     text-align: left;
 }
 td:nth-child(2) 
@@ -113,22 +133,41 @@ td:nth-child(2)
 }
 td:nth-child(3) 
 { 
+    text-align: left;
+    width: 6em;
+}
+th:nth-child(3) 
+{ 
+    text-align: left;
+    width: 6em;
+}
+td:nth-child(4) 
+{ 
     width: 7em;
     text-align: left;
 }
-td:nth-child(4)
-{
-    width: 5em;
-    text-align: center;
+th:nth-child(4) 
+{ 
+    text-align: left;
 }
 td:nth-child(5)
 {
     width: 5em;
     text-align: center;
 }
+td:nth-child(6)
+{
+    width: 5em;
+    text-align: center;
+}
+td:nth-child(7)
+{
+    width: 5em;
+    text-align: center;
+}
 .price
 {
-    color:rgba(248, 244, 10, 0.993);
+    color:green;
 }
 .img
 {
