@@ -11,4 +11,5 @@ BNB,
 Busd
  
  Можно отправлять и присылать монеты. Busd - Bep20, Shiba and Tether - Erc20. Кнопки send отключены пока на счету пусто. Все функции проверены на тест сетях. Нужно тестировать на mainnet.
-![wallet](https://user-images.githubusercontent.com/48652707/141517745-60fcf643-a3c1-4d40-9ba4-c685645d3357.png)
+![wallet](https://user-images.githubusercontent.com/48652707/141518007-44244cdd-8b2f-4b57-9a61-cb18c80da96a.png)
+
