@@ -17,7 +17,7 @@ $.ajax({
    });
 
 
-   $('.copy').click(function()
+   $('.copySecCod').click(function()
    {
     var text = $(".pCopy").text();
     navigator.clipboard.writeText(text);
@@ -30,7 +30,7 @@ $.ajax({
     success: function(response) 
     { 
        //console.log(response);
-       UpdateBalance(response)
+       UpdateBalance(response);
     },
     error: function(xhr, status, err) 
     {
@@ -46,16 +46,22 @@ $.ajax({
     {
          if((elem.id).toString() === Object.keys(val[index])[0])
          {
-            $('#' + elem.id + ' .balance').text(Object.values(val[index]));
-
+        var bal = Object.values(val[index])[0]; // здесь может быть без [0]
+        
+            $('#' + elem.id + ' .balance').text(bal);
+          
       //Disable button send if balance == 0
-              if(Object.values(val[index]) == 0)
+              if(bal === 0)
               {
                 let button = document.querySelector('#' + elem.id + ' .butSend');
                         button.disabled = true;
                         button.style.background = "gray";
                         button.style.color = "lightsteelblue";
               }
+
+              let price =  $('#' + elem.id + ' .price').text();
+              price = price.slice(0, price.indexOf(' '));
+             $('#' + elem.id + ' .sum').html(" " + (Number(price)* Number(bal)) + ' $'); 
          }
     });
     
@@ -69,7 +75,7 @@ $.ajax({
   url: 'http://localhost:8080/price',
   success: function(response) 
   { 
-     WievPrice(response)
+     WievPrice(response);
   },
   error: function(xhr, status, err) 
   {
@@ -79,14 +85,21 @@ $.ajax({
 
  function WievPrice(val) 
  {
-  
+   
   $('.wallet table tbody tr').each((index, elem) => 
   {
-      if((elem.id).toString() === Object.keys(val[index])[0])
-      {
-        var t = Object.values(val[index]) + '<span style="color:green"> $</span>'; 
-          $('#' + elem.id + ' .price').html(t);
-      }
+      // if((elem.id).toString() === Object.keys(val[index])[0])
+      // {
+      //   var t = Object.values(val[index]) + '<span style="color:green"> $</span>';
+       var percent = val[index][2];
+          $('#' + elem.id + ' .price').html(val[index][1] + ' $');
+          if (Number(percent) > 0)
+                 $('#' + elem.id + ' .percent').css("color","green");
+                      else
+                      $('#' + elem.id + ' .percent').css("color","rgba(211, 80, 90, 0.993)");
+          $('#' + elem.id + ' .percent').html(percent + ' %'); 
+
+      // }
   });
 
  }
