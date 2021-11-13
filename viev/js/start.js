@@ -93,10 +93,10 @@ $.ajax({
       //   var t = Object.values(val[index]) + '<span style="color:green"> $</span>';
        var percent = val[index][2];
           $('#' + elem.id + ' .price').html(val[index][1] + ' $');
-          if (Number(percent) > 0)
-                 $('#' + elem.id + ' .percent').css("color","green");
+          if (Number(percent) >= 0)
+                 $('#' + elem.id + ' .percent').css("color","rgb(2, 177, 2)");
                       else
-                      $('#' + elem.id + ' .percent').css("color","rgba(211, 80, 90, 0.993)");
+                      $('#' + elem.id + ' .percent').css("color","red");
           $('#' + elem.id + ' .percent').html(percent + ' %'); 
 
       // }
