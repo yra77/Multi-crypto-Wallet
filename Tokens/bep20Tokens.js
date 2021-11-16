@@ -93,6 +93,10 @@ module.exports.SendBNB = async(fromAddress, privateKey, toAddress, amount)=>
 
 module.exports.SendBep20 = async(fromAddress, privateKey, toAddress, amount)=>
 {
+   if(!web3.utils.isAddress(toAddress))
+   {
+     return "Error address bep20.";
+   }
     var gasprice = await web3.eth.getGasPrice();
     const count = await web3.eth.getTransactionCount(fromAddress);
     amount = web3.utils.toHex(amount*1000000000000000000);//10000000000000000000//web3.utils.toBN(amount*1000000000000000000);//
