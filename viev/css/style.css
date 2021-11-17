@@ -9,6 +9,25 @@ body
     height: 35em;
     padding: 0px;
 }
+.history:active
+{
+    outline: none;
+}
+.history:focus
+{
+    outline: none;
+}
+.history
+{
+    background-color: black;
+    border: none;
+     float:left; 
+     margin-left:2em; 
+     margin-top:2em; 
+     color:rgb(59, 138, 243); 
+     font-size:90%;
+     outline: none;
+}
 .high
 {
     background-color: rgb(7, 4, 61);
