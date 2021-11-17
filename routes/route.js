@@ -39,4 +39,10 @@ app.use(bodyParser.json());
           var result = main.GetPrices();
            result.then(val =>{res.send(val);});
      });
+
+     app.post('/history', (req, res) => 
+     {
+          var result = main.ReadHistory();
+           result.then(val =>{res.send(val);});
+     });
 }
