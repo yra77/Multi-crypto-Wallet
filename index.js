@@ -36,6 +36,35 @@ module.exports.GetPrices = async ()=>
    return arr;
 }
 
+SaveHistory = async(transactionHash)=>
+{
+    var path = './history.txt';
+    var now = new Date();
+    
+    const offsetMs = now.getTimezoneOffset() * 60 * 1000;
+    const dateLocal = new Date(now.getTime() - offsetMs);
+    const time = dateLocal.toISOString().slice(0, 19).replace(/-/g, "-").replace("T", " ");
+
+    var str = time + " &nbsp;&nbsp;" + transactionHash + "\n";
+
+    fs.appendFile(path, str, function (err) 
+    {
+      if (err) 
+        throw err;
+    });
+} 
+
+module.exports.ReadHistory = async()=>
+{
+  var arr = '';
+  var path = './history.txt';
+  if (fs.existsSync(path))
+  {
+    arr = fs.readFileSync(path);
+  }
+  return arr;
+}
+
 module.exports.SendCoin = async (id, toAddress, amount) =>
 {
     var walletKey = '';
@@ -94,6 +123,8 @@ module.exports.SendCoin = async (id, toAddress, amount) =>
          break;
      }
 
+     SaveHistory(resTransactions);
+
      return resTransactions;
 }
 
@@ -121,7 +152,6 @@ module.exports.GetBalance = async ()=>
 {
   this.balance = [];
   
-    // console.log(Number(await shiba.GetBalance(this.jsonKeys[4]['ethereum']['address'])));
    if(this.jsonKeys.length > 1)
    {
         this.balance.push({"bitcoin" : await bitWallet.GetBalance(this.jsonKeys[0]['bitcoin']['address'])});
@@ -180,11 +210,3 @@ module.exports.Main = ()=>
     CreateKeys(this.secretCode);
 }
  
-
-
-
- 
-
-
-
-
